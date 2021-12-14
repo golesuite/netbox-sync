@@ -1,0 +1,47 @@
+# netbox_inventory.yml file in YAML format
+#
+# Example command line: ansible-inventory -v --list -i netbox_inventory.yml
+
+# corp
+api_endpoint: https://netbox.golesuite.com/
+token: 
+
+plugin: netbox.netbox.nb_inventory
+validate_certs: True
+config_context: True
+
+#fetch_all: True
+flatten_custom_fields: True
+
+interfaces: True
+
+group_by:
+  - tags
+
+#query_filters:
+#  - platform: proxmox
+
+# # Query filters are passed directly as an argument to the fetching queries.
+# # You can repeat tags in the query string.
+# query_filters:
+#   - role: server
+#   - tag: web
+#   - tag: production
+
+# See the NetBox documentation at https://netbox.readthedocs.io/en/latest/api/overview/
+# the query_filters work as a logical **OR**
+#
+# Prefix any custom fields with cf_ and pass the field value with the regular NetBox query string
+
+# query_filters:
+#   - cf_foo: bar
+
+# NetBox inventory plugin also supports Constructable semantics
+# You can fill your hosts vars using the compose option:
+
+# plugin: netbox
+compose:
+  # nested_variable: rack.display_name
+  ansible_user: local_context_data.user_name
+  ansible_password: local_context_data.user_password
+  custom_fields: custom_fields
