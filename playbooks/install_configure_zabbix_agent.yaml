@@ -1,4 +1,4 @@
-- name: Kuberetes auto install
+- name: Install and configure zabbix agent
   hosts: teste-gole
   remote_user: ansible
   become: true
