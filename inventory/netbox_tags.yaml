@@ -1,7 +1,6 @@
 # netbox_inventory.yml file in YAML format
 #
-# Example command line: ansible-inventory -v --list -i netbox_inventory.yml
-
+# Exemple comand line: NETBOX_TOKEN=8b ansible-inventory -v --list -i inventory/netbox_tags.yaml
 # corp
 api_endpoint: https://netbox.golesuite.com/
 # token: env: NETBOX_TOKEN 
