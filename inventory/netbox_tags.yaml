@@ -40,7 +40,7 @@ group_by:
 
 # plugin: netbox
 compose:
-  # nested_variable: rack.display_name
-  ansible_user: local_context_data.user_name
-  ansible_password: local_context_data.user_password
+  ansible_user: local_context_data.ansible_user
   custom_fields: custom_fields
+  # nested_variable: rack.display_name
+  #ansible_password: local_context_data.user_password
