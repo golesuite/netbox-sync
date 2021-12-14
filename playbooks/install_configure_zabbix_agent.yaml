@@ -1,5 +1,5 @@
 - name: Install and configure zabbix agent
-  hosts: teste-gole
+  hosts: tags_zabbix-agent
   remote_user: ansible
   become: true
 
@@ -12,7 +12,6 @@
           - zabbix-agent
           - tcpdump
           - qemu-guest-agent  
-          - hugo          
           #- ntp
           #- ntpdate
 
