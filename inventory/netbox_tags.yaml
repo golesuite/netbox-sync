@@ -4,7 +4,7 @@
 
 # corp
 api_endpoint: https://netbox.golesuite.com/
-token: 
+# token: env: NETBOX_TOKEN 
 
 plugin: netbox.netbox.nb_inventory
 validate_certs: True
