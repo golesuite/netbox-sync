@@ -1,6 +1,5 @@
 - name: Install and configure zabbix agent
   hosts: tags_zabbix-agent
-  remote_user: ansible
   become: true
 
   tasks:
@@ -42,30 +41,28 @@
         - 'ServerActive=127.0.0.1'
 
     # ZABBIX
-    # - name: Zabbix - Remove zabbix old Metadata
-    # lineinfile:
-    #   path: /etc/zabbix/zabbix_agentd.conf
-    #   state: absent        
-    #   regexp: '^HostMetadata'
+    - name: Zabbix - Remove zabbix old Metadata
+      lineinfile:
+        path: /etc/zabbix/zabbix_agentd.conf
+        state: absent        
+        regexp: '^HostMetadata'
       
-          # - name: Zabbix - Configure zabbix server
-          # lineinfile:
-          # path: /etc/zabbix/zabbix_agentd.conf
-
-          # state: present
-          # line: "{{ item }}"
-          # with_items:
-          # - 'Server=noc.blacktourmaline.corp'
-          # - 'ServerActive=noc.blacktourmaline.corp'
-          # - "Hostname={{ ansible_fqdn }}"
-          # - "HostMetadata=platform:{{ platforms[0] }} - tenant:{{ tenants[0] }} - device_role:{{ device_roles[0] }} - {{ tags }}"
+    - name: Zabbix - Configure zabbix server
+      lineinfile:
+        path: /etc/zabbix/zabbix_agentd.conf
+        state: present
+        line: "{{ item }}"
+      with_items:
+        - 'Server=monitor.golesuite.com'
+        - 'ServerActive=monitor.golesuite.com'
+        - "Hostname={{ ansible_fqdn }}"
+        - "HostMetadata=platform:{{ platforms[0] }} - tenant:{{ tenants[0] }} - device_role:{{ device_roles[0] }} - {{ tags }}"
         
-          # - name: start_restart_zabbix_agent
-          # service:
-          # name=zabbix-agent
-          # state=restarted
-          # enabled=yes
-        
+    - name: start_restart_zabbix_agent
+      service:
+        name: zabbix-agent
+        state: restarted
+        enabled: yes
         
   # handlers:
   #   # this tasks is to ensure ntp service is started
