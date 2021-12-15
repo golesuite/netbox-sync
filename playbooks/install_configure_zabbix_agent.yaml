@@ -1,8 +1,26 @@
 - name: Install and configure zabbix agent
-  hosts: tags_zabbix-agent
+  #  hosts: tags_zabbix-agent
+  hosts: localhost
   become: true
+  gather_facts: no
 
   tasks:
+
+    - name: Reduce host inventory information to provided keys
+      local_action:
+        module: community.zabbix.zabbix_host_info
+        server_url: "https://monitor.golesuite.com/"
+        login_user: aline
+        login_password: CThyFmnjrF25hB4
+#         host_name: ExampleHost
+        host_inventory:
+          - os
+          - tag
+#       host_ip: 127.0.0.1
+        timeout: 10
+        exact_match: no
+        remove_duplicate: yes
+
     # install packages
     - name: install packages
       apt:
