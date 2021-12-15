@@ -1,78 +1,112 @@
 - name: Install and configure zabbix agent
   hosts: tags_zabbix-agent
-  become: true
+  become: false
+  gather_facts: yes
+
+# community.zabbix.zabbix_host_facts
+# community.zabbix.zabbix_host_info
 
   tasks:
-    # install packages
-    - name: install packages
-      apt:
-        state: present
-        name:
-          - zabbix-agent
-          - tcpdump
-          - qemu-guest-agent  
-          #- ntp
-          #- ntpdate
+    - name: Get host info
+      local_action:
+        module: community.zabbix.zabbix_host_info
+        server_url: "https://monitor.golesuite.com/"
+        login_user: aline
+        login_password: CThyFmnjrF25hB4
+        timeout: 10
+        exact_match: no
+        remove_duplicate: yes
+        host_name: "{{ ansible_fqdn }}"
+      register: zabbix_contents
 
-    - name: inside etc/hosts, change hostname to real ip, not loopback 
-      lineinfile:
-        path: /etc/hosts
-        state: present
-        line: "{{ item }}"
-      with_items:
-        - "{{ primary_ip4 }} {{ ansible_fqdn }} {{ inventory_hostname }}"
+    - debug:
+        msg: "ansible ok: {{ ansible_fqdn }} {{ zabbix_contents.hosts[0]['host']}}"
+      when: zabbix_contents.ok        
         
-    - name: Comment out default /etc/hosts
-      lineinfile:
-        path: /etc/hosts
-        state: absent
-        line: "{{ item }}"
-      with_items:
-        - "127.0.1.1 {{ ansible_fqdn }} {{ inventory_hostname }}"
-        
-    # ZABBIX
-    - name: Zabbix - Remove zabbix server loopback
-      lineinfile:
-        path: /etc/zabbix/zabbix_agentd.conf
-        state: absent        
-        line: "{{ item }}"
-      with_items:
-        - 'Server=127.0.0.1'
-        - 'ServerActive=127.0.0.1'
+    # - name: force ansible debug
+    #   ansible.builtin.shell:
+    #     cmd: echo "{{ zabbix_contents.hosts[0] }}"
+    #- name: Check if hostname have the key "zabbix_status: true" in Netbox host config_context
 
-    # ZABBIX
-    - name: Zabbix - Remove zabbix old Metadata
-      lineinfile:
-        path: /etc/zabbix/zabbix_agentd.conf
-        state: absent        
-        regexp: '^HostMetadata'
+
+  # - set_fact:
+  #     mac_address: "{{ interfaces | json_query('[*].mac_address') }}"
       
-    - name: Zabbix - Configure zabbix server
-      lineinfile:
-        path: /etc/zabbix/zabbix_agentd.conf
-        state: present
-        line: "{{ item }}"
-      with_items:
-        - 'Server=monitor.golesuite.com'
-        - 'ServerActive=monitor.golesuite.com'
-        - "Hostname={{ ansible_fqdn }}"
-        - "HostMetadata=platform:{{ platforms[0] }} - tenant:{{ tenants[0] }} - device_role:{{ device_roles[0] }} - {{ tags }}"
+
+
+      
+
+  
+  #   # install packages
+  #   - name: install packages
+  #     apt:
+  #       state: present
+  #       name:
+  #         - zabbix-agent
+  #         - tcpdump
+  #         - qemu-guest-agent  
+  #         #- ntp
+  #         #- ntpdate
+
+  #   - name: inside etc/hosts, change hostname to real ip, not loopback 
+  #     lineinfile:
+  #       path: /etc/hosts
+  #       state: present
+  #       line: "{{ item }}"
+  #     with_items:
+  #       - "{{ primary_ip4 }} {{ ansible_fqdn }} {{ inventory_hostname }}"
         
-    - name: start_restart_zabbix_agent
-      service:
-        name: zabbix-agent
-        state: restarted
-        enabled: yes
+  #   - name: Comment out default /etc/hosts
+  #     lineinfile:
+  #       path: /etc/hosts
+  #       state: absent
+  #       line: "{{ item }}"
+  #     with_items:
+  #       - "127.0.1.1 {{ ansible_fqdn }} {{ inventory_hostname }}"
         
-  # handlers:
-  #   # this tasks is to ensure ntp service is started
-  #   - name: start_restart_ntp_client
-  #     service:
-  #       name=ntpd
-  #       state=restarted
-  #       enabled=yes
+  #   # ZABBIX
+  #   - name: Zabbix - Remove zabbix server loopback
+  #     lineinfile:
+  #       path: /etc/zabbix/zabbix_agentd.conf
+  #       state: absent
+  #       line: "{{ item }}"
+  #     with_items:
+  #       - 'Server=127.0.0.1'
+  #       - 'ServerActive=127.0.0.1'
+
+  #   # ZABBIX
+  #   - name: Zabbix - Remove zabbix old Metadata
+  #     lineinfile:
+  #       path: /etc/zabbix/zabbix_agentd.conf
+  #       state: absent        
+  #       regexp: '^HostMetadata'
+      
+  #   - name: Zabbix - Configure zabbix server
+  #     lineinfile:
+  #       path: /etc/zabbix/zabbix_agentd.conf
+  #       state: present
+  #       line: "{{ item }}"
+  #     with_items:
+  #       - 'Server=monitor.golesuite.com'
+  #       - 'ServerActive=monitor.golesuite.com'
+  #       - "Hostname={{ ansible_fqdn }}"
+  #       - "HostMetadata=platform:{{ platforms[0] }} - tenant:{{ tenants[0] }} - device_role:{{ device_roles[0] }} - {{ tags }}"
+        
   #   - name: start_restart_zabbix_agent
   #     service:
-  #       name=zabbix-agent
-  #       state=restarted
-  #       enabled=yes
+  #       name: zabbix-agent
+  #       state: restarted
+  #       enabled: yes
+        
+  # # handlers:
+  # #   # this tasks is to ensure ntp service is started
+  # #   - name: start_restart_ntp_client
+  # #     service:
+  # #       name=ntpd
+  # #       state=restarted
+  # #       enabled=yes
+  # #   - name: start_restart_zabbix_agent
+  # #     service:
+  # #       name=zabbix-agent
+  # #       state=restarted
+  # #       enabled=yes
