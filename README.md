@@ -20,3 +20,14 @@ Para mais informações sobre a plataforma Zabbix e o Zabbix-agent consulte a do
 
 ## Dependências
 * [zabbix-api](https://www.zabbix.com/documentation/current/pt/manual/api)
+
+
+### configuracao
+
+Para configurar as senhas copie o arquivo senhas-default para senhras e altere conforme sua necessidade
+
+```
+$ cp vars/senhas-default vars/senhas
+$ echo '<utilize seu editor de texto para alterar as senhas>'
+
+```

@@ -6,6 +6,11 @@
 # community.zabbix.zabbix_host_facts
 # community.zabbix.zabbix_host_info
 
+  vars:
+    - netbox_url: sdfkjasdfkjasfkdj
+    - server_url: netboxalsdjfsf
+    - usuari_zabbix:
+
   tasks:
     - name: Get host info
       local_action:
@@ -18,10 +23,24 @@
         remove_duplicate: yes
         host_name: "{{ ansible_fqdn }}"
       register: zabbix_contents
+      ignore_errors: yes
 
+    - name: Updating config_context value inside local inventory
+      debug:
+        msg: "ansible false: {{ ansible_fqdn }} {{ config_context }}"
+        config_context[0]['zabbix_status'] = False
+      when: "'hosts' not in zabbix_contents"
+      register: netbox_new_machines
+    
+    - name: sending netbox with zabbix_status = false
+      debug:
+        msg: "ansible false: {{ ansible_fqdn }} {{ config_context }}"
+      with: {{ item }}
+      items: netbox_new_machines
+      
     - debug:
         msg: "ansible ok: {{ ansible_fqdn }} {{ zabbix_contents.hosts[0]['host']}}"
-      when: zabbix_contents.ok
+      when: "'hosts' in zabbix_contents"
         
     # - name: force ansible debug
     #   ansible.builtin.shell:
