@@ -16,6 +16,9 @@ Este módulo utiliza as seguintes ferramentas:
 | <img src="./imagens/Ansible_logo.png" alt="drawing" width="35"/> | <img src="./imagens/netbox_logo-removebg.png" alt="drawing" width="40"/> | <img src="./imagens/zabbix_logo_500x131OF.png" alt="drawing" width="60"/> |
 | [Documentação Ansible](https://docs.ansible.com/ansible_community.html) | [Documentação Netbox](https://netbox.readthedocs.io/en/stable/)  | [Documentação Zabbix](https://www.zabbix.com/documentation/current/en) |
 
+### The big picture
+![Big picture Netbox-sync](./imagens/diagrama_netbox-sync.svg "Big picture Netbox-sync")
+
 #### Dependências 
  - [Zabbix-api](https://www.zabbix.com/documentation/current/pt/manual/api).
  - [Pynetbox](https://pypi.org/project/pynetbox/)
