@@ -38,6 +38,12 @@
       register: local_config_context
       when: "'hosts' not in zabbix_contents"
 
+    - name: update dict
+      set_fact:
+        config_context: '{{ config_context|combine({"zabbix_status": true})}}'
+      register: local_config_context
+      when: "'hosts' in zabbix_contents"
+
     - name: Update vcpus, memory and disk of an existing virtual machine
       local_action:
         module: netbox.netbox.netbox_virtual_machine
