@@ -32,19 +32,19 @@
     #   when: "'hosts' not in zabbix_contents"
     #   register: netbox_new_machines
     
-    - name: update dict
+    - name: Updating dict
       set_fact:
         config_context: '{{ config_context|combine({"zabbix_status": false})}}'
       register: local_config_context
       when: "'hosts' not in zabbix_contents"
 
-    - name: update dict
+    - name: Updating dict
       set_fact:
         config_context: '{{ config_context|combine({"zabbix_status": true})}}'
       register: local_config_context
       when: "'hosts' in zabbix_contents"
 
-    - name: Update vcpus, memory and disk of an existing virtual machine
+    - name: Updating config_context 
       local_action:
         module: netbox.netbox.netbox_virtual_machine
         netbox_url: https://netbox.golesuite.com/
