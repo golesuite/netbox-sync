@@ -6,9 +6,9 @@ A função desse projeto é a sincronização de hosts entre o Netbox e Zabbix. 
 
 Este módulo utiliza as seguintes ferramentas:
   
-Netbox - Responsável pela origem dos dados (Fonte da verdade); 
-Ansible - Responsável por sincronizar o Zabbix com as informações do Netbox; 
-Zabbix - Ferramenta de monitoramento.   
+- Netbox - Responsável pela origem dos dados (Fonte da verdade); 
+- Ansible - Responsável por sincronizar o Zabbix com as informações do Netbox; 
+- Zabbix - Ferramenta de monitoramento.   
 
 
 Mais Informações sobre as ferramentas:  
