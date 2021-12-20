@@ -19,6 +19,10 @@ Este módulo utiliza as seguintes ferramentas:
 ### The big picture
 ![Big picture Netbox-sync](./imagens/diagrama_netbox-sync.svg "Big picture Netbox-sync")
 
+#### Visual
+
+Asciinema and images screenshots
+
 #### Dependências 
  - [Zabbix-api](https://www.zabbix.com/documentation/current/pt/manual/api).
  - [Pynetbox](https://pypi.org/project/pynetbox/)
