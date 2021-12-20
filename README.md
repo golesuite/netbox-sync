@@ -42,7 +42,7 @@ asfaslkfjalksdjflsadf
 
 asfaslkfjalksdjflsadf
 
-#### Roudmap
+#### Roadmap
 
 asfaslkfjalksdjflsadf
 
@@ -50,12 +50,21 @@ asfaslkfjalksdjflsadf
 
 asfaslkfjalksdjflsadf
 
-#### Authors and acknowledge
+#### Authors and acknowledgement
 
-asfaslkfjalksdjflsadf
+Esse script foi desenvolvido pelos membros da Gole, que são responsáveis pela manutenção e atualização do projeto. Caso haja interesse em contribuir para o desenvolvimento do projeto, consulte o tópico “Contribute” neste mesmo documento.
+
+Integrantes:
+
+Maurício Santana Gonçalves - @nemmeviu <br>
+Maria Aline Ferreira de Lima - @MariaAline26 <br>
+Murilo Pedroso Braga - @murilopedrosobraga <br>
+Liara Assad Macool - <a href="https://www.linkedin.com/in/liara-assad-macool-87375215/" target="_blank">LinkedIn</a>
 
 #### License
 
 alskdjfakjsdf
 
 #### Project Status
+
+O projeto atualmente tem suas funcionalidades atreladas a conexão com o Zabbix, naturalmente, com o avanço do desenvolvimento novos módulos de sincronização serão adicionados à plataforma, buscando abranger um maior número de possibilidades.
