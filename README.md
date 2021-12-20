@@ -48,11 +48,12 @@ asfaslkfjalksdjflsadf
 
 #### Contribute
 
-asfaslkfjalksdjflsadf
+Caso haja interesse em contribuir de alguma forma para com o projeto, por favor, acesse o link abaixo para mais informações <br>
+* [Contributing](CONTRIBUTING.md)
 
 #### Authors and acknowledgement
 
-Esse script foi desenvolvido pelos membros da Gole, que são responsáveis pela manutenção e atualização do projeto. Caso haja interesse em contribuir para o desenvolvimento do projeto, consulte o tópico “Contribute” neste mesmo documento.
+Esse script foi desenvolvido pelos membros da Gole, que são responsáveis pela manutenção e atualização do projeto. Caso haja interesse em contribuir para o desenvolvimento do projeto, consulte o tópico “Contributing” neste mesmo documento.
 
 Integrantes:
 
