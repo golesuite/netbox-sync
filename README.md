@@ -28,3 +28,30 @@ pip3 install zabbix-api
 pip3 install pynetbox
 git clone repo
 ```
+
+#### Usage
+
+
+asfaslkfjalksdjflsadf
+
+#### Support
+
+asfaslkfjalksdjflsadf
+
+#### Roudmap
+
+asfaslkfjalksdjflsadf
+
+#### Contribute
+
+asfaslkfjalksdjflsadf
+
+#### Authors and acknowledge
+
+asfaslkfjalksdjflsadf
+
+#### License
+
+alskdjfakjsdf
+
+#### Project Status
