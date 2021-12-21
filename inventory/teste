@@ -1,6 +1,0 @@
-[teste-gole]
-brgole00ws01
-brgole00ws02
-[teste-gole:vars]
-ansible_user=ansible
-ansible_password=ansible123

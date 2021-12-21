@@ -71,8 +71,8 @@
         state: present
         line: "{{ item }}"
       with_items:
-        - 'Server=monitor.golesuite.com'
-        - 'ServerActive=monitor.golesuite.com'
+        - 'Server="{{zabbix_server_url}}"'
+        - 'ServerActive="{{zabbix_server_url}}"'
         - "Hostname={{ ansible_fqdn }}"
         - "HostMetadata=platform:{{ platforms[0] }} - tenant:{{ tenants[0] }} - device_role:{{ device_roles[0] }} - {{ tags }}"
       when: "'hosts' not in zabbix_contents"

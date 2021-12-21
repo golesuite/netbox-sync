@@ -1,1 +1,2 @@
 vars/external_vars.yml
+inventory/netbox_tags.yml
