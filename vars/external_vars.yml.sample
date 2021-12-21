@@ -1,5 +1,5 @@
-netbox_url: https://netbox.golesuite.com/
-netbox_token: d636496e70d0d20af3228e8ed8adfc30d78fab22
-zabbix_server_url: https://monitor.golesuite.com/
-zabbix_user: aline
-zabbix_pass: CThyFmnjrF25hB4
+netbox_url: https://exemple.com/
+netbox_token: 
+zabbix_server_url: https://exemple.com/
+zabbix_user: user_name
+zabbix_pass: user_password
