@@ -4,15 +4,15 @@
   gather_facts: yes
 
   vars_files:
-    - /vars/external_vars.yml
+    - ~/projects/netbox-sync/vars/external_vars.yml.sample
 
   tasks:
     - name: Get host info
       local_action:
         module: community.zabbix.zabbix_host_info
-        server_url: "https://monitor.golesuite.com/"
-        login_user: aline
-        login_password: CThyFmnjrF25hB4
+        server_url: "{{zabbix_server_url}}"
+        login_user: "{{zabbix_user}}"
+        login_password: "{{zabbix_pass}}"
         timeout: 10
         exact_match: no
         remove_duplicate: yes
@@ -92,9 +92,9 @@
     - name: Get host info again
       local_action:
         module: community.zabbix.zabbix_host_info
-        server_url: "https://monitor.golesuite.com/"
-        login_user: aline
-        login_password: CThyFmnjrF25hB4
+        server_url: "{{zabbix_server_url}}"
+        login_user: "{{zabbix_user}}"
+        login_password: "{{zabbix_pass}}"
         timeout: 10
         exact_match: no
         remove_duplicate: yes
@@ -117,8 +117,8 @@
     - name: Updating config_context 
       local_action:
         module: netbox.netbox.netbox_virtual_machine
-        netbox_url: https://netbox.golesuite.com/
-        netbox_token: d636496e70d0d20af3228e8ed8adfc30d78fab22
+        netbox_url: "{{netbox_url}}"
+        netbox_token: "{{netbox_token}}"
         data:
           cluster: "{{ cluster }}"
           name: "{{ ansible_fqdn.split('.')[0] }}"
