@@ -39,6 +39,7 @@ git clone repo
 cd netbox-sync
 cp vars/external_vars.yml.sample vars/external_vars.yml
 echo << editar arquivo de variaveis vars/external_vars.yml >>
+```
 
 #### Usage
 
