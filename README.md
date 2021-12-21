@@ -35,16 +35,21 @@ git clone repo
 
 #### Usage
 
-
-asfaslkfjalksdjflsadf
+In Progress
 
 #### Support
 
-asfaslkfjalksdjflsadf
+Você pode nos contactar através das informações descritas abaixo:
+
+
+E-mail: infra@golesuite.com
+
+
+Site: https://golesuite.com
 
 #### Roadmap
 
-asfaslkfjalksdjflsadf
+In Progress
 
 #### Contribute
 
@@ -64,7 +69,7 @@ Liara Assad Macool - <a href="https://www.linkedin.com/in/liara-assad-macool-873
 
 #### License
 
-alskdjfakjsdf
+This project is licensed under the Apache License 2.0
 
 #### Project Status
 
