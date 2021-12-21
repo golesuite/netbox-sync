@@ -33,6 +33,13 @@ pip3 install pynetbox
 git clone repo
 ```
 
+#### Install and configure
+
+```
+cd netbox-sync
+cp vars/external_vars.yml.sample vars/external_vars.yml
+echo << editar arquivo de variaveis vars/external_vars.yml >>
+
 #### Usage
 
 In Progress
