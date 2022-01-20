@@ -1,5 +1,6 @@
-netbox_url: https://exemple.com/
+netbox_url: https://netbox.exemple.com/
 netbox_token: 
-zabbix_server_url: https://exemple.com/
+zabbix_server_url: https://zabbix.exemple.com/
+zabbix_server_config: exemple.com
 zabbix_user: user_name
 zabbix_pass: user_password
