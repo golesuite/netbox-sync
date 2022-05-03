@@ -1,6 +1,6 @@
 - name: Install and configure zabbix agent
   hosts: tags_zabbix-agent
-  become: False
+  become: True
   gather_facts: yes
 
   vars_files:
